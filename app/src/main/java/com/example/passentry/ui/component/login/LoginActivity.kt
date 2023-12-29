@@ -83,6 +83,7 @@ class LoginActivity : BaseActivity() {
             binding.passwordEditText.text.toString()
         )?.observe(this) {
             startActivity(Intent(this, MainActivity::class.java))
+            finish() // Finish the login activity
 
 
             Log.d(TAG, it.token)
@@ -112,14 +113,19 @@ class LoginActivity : BaseActivity() {
         emailInputLayout: TextInputLayout,
         passwordInputLayout: TextInputLayout
     ) {
-
         val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
+
+        // Regular expression for validating email
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+" // Simplified regex for example
 
         var isValid = true
 
         if (email.isEmpty()) {
             emailInputLayout.error = "Email cannot be empty"
+            isValid = false
+        } else if (!email.matches(emailPattern.toRegex())) {
+            emailInputLayout.error = "Invalid email format"
             isValid = false
         } else {
             emailInputLayout.error = null
@@ -139,4 +145,5 @@ class LoginActivity : BaseActivity() {
             doLogin()
         }
     }
+
 }
