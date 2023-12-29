@@ -15,7 +15,7 @@
     <string name="invalid_password">Password must be >4 characters</string>
     <string name="invalid_username_and_password">please check your username and password</string>
     <string name="add_to_favorite">Add to favorite</string>
-    <string name="Username">userName</string>
+    <string name="Username">Username / Email</string>
 
     <string name="password">Password</string>
     <string name="empty_list_message">List is empty\n</string>
