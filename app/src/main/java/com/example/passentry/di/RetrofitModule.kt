@@ -39,18 +39,25 @@ class RetrofitModule {
         appInfo: SharedPreferences
     ): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor {
-                val oldRequest = it.request()
-                val newRequestBuilder = oldRequest.newBuilder()
-                if (appInfo.getString("AUTH_TOKEN", null) != null)
-                    newRequestBuilder.addHeader(
-                        "Authorization",
-                        "Bearer ${appInfo.getString(AUTH_TOKEN, null)}"
-                    )
+            .addInterceptor { chain ->
+                val originalRequest = chain.request()
+                val newRequestBuilder = originalRequest.newBuilder()
+
+                // Fetch the token from SharedPreferences
+                val token = appInfo.getString(AUTH_TOKEN, null)
+                if (token != null) {
+                    // Add the Authorization header with the Bearer token
+                    newRequestBuilder.addHeader("Authorization", "Bearer $token")
+                }
+
+                // Add the Content-Type header
                 newRequestBuilder.addHeader("Content-Type", "application/json")
 
-                newRequestBuilder.method(oldRequest.method, oldRequest.body)
-                return@addInterceptor it.proceed(newRequestBuilder.build())
+                // Preserve the original request method and body
+                newRequestBuilder.method(originalRequest.method, originalRequest.body)
+
+                // Proceed with the new request
+                chain.proceed(newRequestBuilder.build())
             }
             .addInterceptor(HttpLoggingInterceptor().apply {
                 setLevel(HttpLoggingInterceptor.Level.BODY)

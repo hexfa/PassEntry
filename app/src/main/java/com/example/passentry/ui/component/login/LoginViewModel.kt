@@ -9,6 +9,7 @@ import com.example.passentry.data.LoginRepository
 import com.example.passentry.data.Resource
 import com.example.passentry.data.remote.login.LoginRequest
 import com.example.passentry.data.remote.login.LoginResponse
+import com.example.passentry.data.remote.tap.TapList
 import com.example.passentry.data.remote.tap.TapResponse
 import com.example.passentry.ui.base.BaseViewModel
 import com.example.passentry.usecase.LoginUseCase
@@ -66,8 +67,8 @@ private val tapsUseCase: TapsUseCase) : BaseViewModel() {
         return loginLiveData
     }
 
-    fun taps(userName: String, passWord: String) : LiveData<TapResponse>? {
-        val tapLiveData = MutableLiveData<TapResponse>()
+    fun taps(userName: String, passWord: String) : LiveData<List<TapResponse>>? {
+        val tapLiveData = MutableLiveData<List<TapResponse>>()
         tapsUseCase.saveTap(LoginRequest(userName,passWord))
         tapsUseCase.execute(
             onSuccess = {
