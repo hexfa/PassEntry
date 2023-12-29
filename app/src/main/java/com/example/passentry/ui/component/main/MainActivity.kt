@@ -1,6 +1,8 @@
 package com.example.passentry.ui.component.main
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +26,8 @@ import com.example.passentry.utils.AUTH_TOKEN
 import com.example.passentry.utils.PASSWORD
 import com.example.passentry.utils.USERNAME
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -46,7 +51,6 @@ class MainActivity : BaseActivity() {
         loginViewModel.taps("hello@passentry.com", "securepass")?.observe(this) {
             recyclerView.adapter = RecyclerViewAdapter(it)
             binding.emptyView.visibility=View.GONE
-            Log.d("mainnnnnnnnnnnnnnnnnnnnnnnnnnn",it.toString())
 
         }
     }
@@ -57,10 +61,15 @@ class RecyclerViewAdapter(private val items: List<TapResponse>) :
 
 
     class ViewHolder(private val binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+        @RequiresApi(Build.VERSION_CODES.O)
+        @SuppressLint("SetTextI18n")
         fun bind(item: TapResponse) {
-            binding.readerIdTextView.text = item.readerId
-            binding.tappedAtTextView.text = item.tappedAt
-            binding.statusTextView.text = item.status
+            val zonedDateTime = ZonedDateTime.parse(item.tappedAt, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+
+            binding.readerIdTextView.text = "Reader ID: "+item.readerId
+            binding.tappedAtTextView.text = "Date: "+zonedDateTime.year +'/'+zonedDateTime.monthValue+'/'+zonedDateTime.dayOfMonth
+            binding.tappedAtTime.text = "Time: "+zonedDateTime.hour+':'+zonedDateTime.minute
+            binding.statusTextView.text = "Status: "+item.status
         }
     }
 

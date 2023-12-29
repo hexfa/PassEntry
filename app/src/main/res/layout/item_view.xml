@@ -23,6 +23,15 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-medium"/>
+            <TextView
+                android:id="@+id/tappedAtTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tapped At: 2023-12-29T09:49:21.385Z"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"/>
 
             <TextView
                 android:id="@+id/statusTextView"
