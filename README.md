@@ -195,7 +195,7 @@ The PassEntry Android application is built using the following technologies and 
 
    [logo]: <https://passentry.com/static/media/logoDarkMode.c064f74f3cd5b4ad0db200660f294052.svg> 
    [site]: <https://github.com/hexfa/PassEntry>
-   [apk]: <https://github.com/hexfa/Files/blob/main/PassEntry/apk/PassEntry-Debug.apk>
+   [apk]: <https://github.com/hexfa/Files/raw/main/PassEntry/apk/PassEntry-Debug.apk>
    [dokka]: <#dokka>
    [doc]: <https://hexfa.com/my-git-doc/passentry>
    [hilt]: <https://dagger.dev/hilt/>
