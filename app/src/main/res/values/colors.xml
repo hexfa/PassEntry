@@ -10,5 +10,6 @@
     <color name="red_light">#FF8477</color>
     <color name="red_more_light">#EC6759</color>
     <color name="dark_grey">#29323A</color>
+    <color name="light_grey">#848997</color>
     <color name="dark_blue">#3D4147</color>
 </resources>

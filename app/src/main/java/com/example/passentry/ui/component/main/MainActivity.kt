@@ -4,8 +4,11 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.passentry.R
@@ -33,11 +36,16 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        val window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.dark_blue)
+
         val recyclerView = binding.listRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         loginViewModel.taps("hello@passentry.com", "securepass")?.observe(this) {
             recyclerView.adapter = RecyclerViewAdapter(it)
+            binding.emptyView.visibility=View.GONE
             Log.d("mainnnnnnnnnnnnnnnnnnnnnnnnnnn",it.toString())
 
         }
@@ -49,8 +57,10 @@ class RecyclerViewAdapter(private val items: List<TapResponse>) :
 
 
     class ViewHolder(private val binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
-            binding.itemTextView.text = item
+        fun bind(item: TapResponse) {
+            binding.readerIdTextView.text = item.readerId
+            binding.tappedAtTextView.text = item.tappedAt
+            binding.statusTextView.text = item.status
         }
     }
 
@@ -61,8 +71,8 @@ class RecyclerViewAdapter(private val items: List<TapResponse>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items[position]
-        holder.bind(item.readerId)
+        val item:TapResponse = items[position]
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int = items.size
