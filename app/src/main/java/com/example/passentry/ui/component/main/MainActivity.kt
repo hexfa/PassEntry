@@ -53,7 +53,7 @@ class MainActivity : BaseActivity() {
 
         binding.exitTxtView.setOnClickListener {
             appInfo.edit().apply {
-                putString(AUTH_TOKEN, "")
+                putString(AUTH_TOKEN, null)
 
             }.apply()
             startActivity(Intent(this, LoginActivity::class.java))
