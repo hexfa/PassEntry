@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">PassEntry</string>
+    <string name="no_data">No Data</string>
+    <string name="search_by_name">Search by name</string>
+    <string name="search_error">there is no such recipe name</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="network_error">Network error, could get data,please try again!</string>
+    <string name="refresh">refresh</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >4 characters</string>
+    <string name="invalid_username_and_password">please check your username and password</string>
+    <string name="add_to_favorite">Add to favorite</string>
+    <string name="Username">Username / Email</string>
+
+    <string name="password">Password</string>
+    <string name="empty_list_message">List is empty\n</string>
+    <string name="exit">Exit</string>
+    <string name="tapped_at_2023_12_29t09_49_21_385z">Tapped At: 2023-12-29T09:49:21.385Z</string>
+    <string name="status_success">Status: success</string>
+    <string name="reader_id_reader_0001">Reader ID: reader-0001</string>
+    <string name="login">Login</string>
+
+</resources>
