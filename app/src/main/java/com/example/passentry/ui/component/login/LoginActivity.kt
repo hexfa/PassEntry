@@ -81,6 +81,7 @@ class LoginActivity : BaseActivity() {
             binding.passwordEditText.text.toString()
         )?.observe(this) {
 
+
             Log.d(TAG, it.token)
             appInfo.edit().apply {
                 putString(AUTH_TOKEN, it.token)
