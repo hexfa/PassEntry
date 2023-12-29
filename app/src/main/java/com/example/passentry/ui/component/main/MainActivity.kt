@@ -15,6 +15,7 @@ import com.example.passentry.databinding.ItemViewBinding
 import com.example.passentry.databinding.LoginActivityBinding
 import com.example.passentry.ui.base.BaseActivity
 import com.example.passentry.ui.component.login.LoginViewModel
+import com.example.passentry.utils.AUTH_TOKEN
 import com.example.passentry.utils.PASSWORD
 import com.example.passentry.utils.USERNAME
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +36,8 @@ class MainActivity : BaseActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         var username = appInfo.getString(USERNAME, null)
         var pass = appInfo.getString(PASSWORD, null)
+        var token=appInfo.getString(AUTH_TOKEN,null)
+        Log.d("mainnnnnnnnnnnnnnnnnnnnnnnnnnn",token.toString())
         loginViewModel.taps("hello@passentry.com", "securepass")?.observe(this) {
            // recyclerView.adapter = RecyclerViewAdapter(it)
 Log.d("maiiiiiiiiiiiiiiiiiin",it.readerId)

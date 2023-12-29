@@ -13,5 +13,5 @@ interface PassEntryService {
     fun login(@Body loginRequest: LoginRequest): Single<LoginResponse>
 
     @GET("/taps")
-    fun taps(@Body loginRequest: LoginRequest): Single<TapResponse>
+    fun taps(): Single<TapResponse>
 }

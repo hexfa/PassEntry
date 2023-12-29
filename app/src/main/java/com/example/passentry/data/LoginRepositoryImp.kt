@@ -20,7 +20,7 @@ class LoginRepositoryImp @Inject constructor(
     }
 
     override fun taps(loginRequest: LoginRequest): Single<TapResponse> {
-        return passEntryService.taps(loginRequest)
+        return passEntryService.taps()
     }
 
 

@@ -6,6 +6,7 @@ import android.util.Log
 import com.example.passentry.data.LoginRepository
 import com.example.passentry.data.LoginRepositoryImp
 import com.example.passentry.data.remote.service.PassEntryService
+import com.example.passentry.utils.AUTH_TOKEN
 import com.example.passentry.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -44,7 +45,7 @@ class RetrofitModule {
                 if (appInfo.getString("AUTH_TOKEN", null) != null)
                     newRequestBuilder.addHeader(
                         "Authorization",
-                        "Bearer ${appInfo.getString("AUTH_TOKEN", null)}"
+                        "Bearer ${appInfo.getString(AUTH_TOKEN, null)}"
                     )
                 newRequestBuilder.addHeader("Content-Type", "application/json")
 
