@@ -1,9 +1,11 @@
 package com.example.passentry.ui.component.main
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.passentry.R
@@ -21,7 +24,9 @@ import com.example.passentry.databinding.ActivityMainBinding
 import com.example.passentry.databinding.ItemViewBinding
 import com.example.passentry.databinding.LoginActivityBinding
 import com.example.passentry.ui.base.BaseActivity
+import com.example.passentry.ui.component.login.LoginActivity
 import com.example.passentry.ui.component.login.LoginViewModel
+import com.example.passentry.ui.component.splash.SplashActivity
 import com.example.passentry.utils.AUTH_TOKEN
 import com.example.passentry.utils.PASSWORD
 import com.example.passentry.utils.USERNAME
@@ -52,6 +57,15 @@ class MainActivity : BaseActivity() {
             recyclerView.adapter = RecyclerViewAdapter(it)
             binding.emptyView.visibility=View.GONE
 
+        }
+
+        binding.exitTxtView.setOnClickListener {
+            appInfo.edit().apply {
+                putString(AUTH_TOKEN,"")
+
+            }.apply()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }
