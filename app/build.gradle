@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
 
-    }
+}
 
 
 android {
@@ -60,7 +60,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     ext.kotlin_version = '1.4.21'
-    ext.hilt_version ='2.31.2-alpha'
+    ext.hilt_version = '2.31.2-alpha'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.test.espresso:espresso-idling-resource:3.5.1'
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -92,7 +92,6 @@ dependencies {
     //rx
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
-
 
 
 }

@@ -5,8 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings.Global.putString
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,22 +12,16 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.passentry.R
-import com.example.passentry.data.remote.tap.TapList
 import com.example.passentry.data.remote.tap.TapResponse
 import com.example.passentry.databinding.ActivityMainBinding
 import com.example.passentry.databinding.ItemViewBinding
-import com.example.passentry.databinding.LoginActivityBinding
 import com.example.passentry.ui.base.BaseActivity
 import com.example.passentry.ui.component.login.LoginActivity
 import com.example.passentry.ui.component.login.LoginViewModel
-import com.example.passentry.ui.component.splash.SplashActivity
 import com.example.passentry.utils.AUTH_TOKEN
-import com.example.passentry.utils.PASSWORD
-import com.example.passentry.utils.USERNAME
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -55,13 +47,13 @@ class MainActivity : BaseActivity() {
 
         loginViewModel.taps("hello@passentry.com", "securepass")?.observe(this) {
             recyclerView.adapter = RecyclerViewAdapter(it)
-            binding.emptyView.visibility=View.GONE
+            binding.emptyView.visibility = View.GONE
 
         }
 
         binding.exitTxtView.setOnClickListener {
             appInfo.edit().apply {
-                putString(AUTH_TOKEN,"")
+                putString(AUTH_TOKEN, "")
 
             }.apply()
             startActivity(Intent(this, LoginActivity::class.java))
@@ -78,12 +70,14 @@ class RecyclerViewAdapter(private val items: List<TapResponse>) :
         @RequiresApi(Build.VERSION_CODES.O)
         @SuppressLint("SetTextI18n")
         fun bind(item: TapResponse) {
-            val zonedDateTime = ZonedDateTime.parse(item.tappedAt, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+            val zonedDateTime =
+                ZonedDateTime.parse(item.tappedAt, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
 
-            binding.readerIdTextView.text = "Reader ID: "+item.readerId
-            binding.tappedAtTextView.text = "Date: "+zonedDateTime.year +'/'+zonedDateTime.monthValue+'/'+zonedDateTime.dayOfMonth
-            binding.tappedAtTime.text = "Time: "+zonedDateTime.hour+':'+zonedDateTime.minute
-            binding.statusTextView.text = "Status: "+item.status
+            binding.readerIdTextView.text = "Reader ID: " + item.readerId
+            binding.tappedAtTextView.text =
+                "Date: " + zonedDateTime.year + '/' + zonedDateTime.monthValue + '/' + zonedDateTime.dayOfMonth
+            binding.tappedAtTime.text = "Time: " + zonedDateTime.hour + ':' + zonedDateTime.minute
+            binding.statusTextView.text = "Status: " + item.status
         }
     }
 
@@ -95,7 +89,7 @@ class RecyclerViewAdapter(private val items: List<TapResponse>) :
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item:TapResponse = items[position]
+        val item: TapResponse = items[position]
         holder.bind(item)
     }
 

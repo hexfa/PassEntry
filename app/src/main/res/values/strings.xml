@@ -20,5 +20,9 @@
     <string name="password">Password</string>
     <string name="empty_list_message">List is empty\n</string>
     <string name="exit">Exit</string>
+    <string name="tapped_at_2023_12_29t09_49_21_385z">Tapped At: 2023-12-29T09:49:21.385Z</string>
+    <string name="status_success">Status: success</string>
+    <string name="reader_id_reader_0001">Reader ID: reader-0001</string>
+    <string name="login">Login</string>
 
 </resources>

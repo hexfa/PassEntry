@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,40 +19,41 @@
                 android:id="@+id/tappedAtTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tapped At: 2023-12-29T09:49:21.385Z"
+                android:fontFamily="sans-serif-medium"
                 android:padding="8dp"
+                android:text="@string/tapped_at_2023_12_29t09_49_21_385z"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif-medium"/>
+                android:textColor="@color/white" />
+
             <TextView
                 android:id="@+id/tappedAtTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tapped At: 2023-12-29T09:49:21.385Z"
+                android:fontFamily="sans-serif-medium"
                 android:padding="8dp"
+                android:text="@string/tapped_at_2023_12_29t09_49_21_385z"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif-medium"/>
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/statusTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Status: success"
+                android:fontFamily="sans-serif-medium"
                 android:padding="8dp"
-                android:textColor="@color/white"
+                android:text="@string/status_success"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:fontFamily="sans-serif-medium"/>
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/readerIdTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Reader ID: reader-0001"
+                android:fontFamily="sans-serif-medium"
                 android:padding="8dp"
+                android:text="@string/reader_id_reader_0001"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif-medium"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

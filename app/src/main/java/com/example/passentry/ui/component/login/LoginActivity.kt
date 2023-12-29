@@ -41,7 +41,14 @@ class LoginActivity : BaseActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.loginButton.setOnClickListener { validateInputs(binding.emailEditText,binding.passwordEditText,binding.emailInputLayout,binding.passwordInputLayout) }
+        binding.loginButton.setOnClickListener {
+            validateInputs(
+                binding.emailEditText,
+                binding.passwordEditText,
+                binding.emailInputLayout,
+                binding.passwordInputLayout
+            )
+        }
         observeSnackBarMessages(loginViewModel.showSnackBar)
 
 

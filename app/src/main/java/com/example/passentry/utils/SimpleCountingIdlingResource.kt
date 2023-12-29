@@ -3,6 +3,7 @@ package com.example.passentry.utils
 import androidx.test.espresso.IdlingResource
 
 import java.util.concurrent.atomic.AtomicInteger
+
 class SimpleCountingIdlingResource(private val resourceName: String) : IdlingResource {
 
     private val counter = AtomicInteger(0)
@@ -18,6 +19,7 @@ class SimpleCountingIdlingResource(private val resourceName: String) : IdlingRes
     override fun registerIdleTransitionCallback(resourceCallback: IdlingResource.ResourceCallback) {
         this.resourceCallback = resourceCallback
     }
+
     fun increment() {
         counter.getAndIncrement()
     }

@@ -1,6 +1,5 @@
 package com.example.passentry.usecase
 
-import apk.drivers.main.framework.base.SingleUseCase
 import com.example.passentry.data.LoginRepository
 import com.example.passentry.data.remote.login.LoginRequest
 import com.example.passentry.data.remote.login.LoginResponse

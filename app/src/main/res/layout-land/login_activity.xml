@@ -10,9 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/dark_blue"
         android:padding="16dp"
-        android:layout_height="match_parent"
         tools:context="com.task.ui.component.login.LoginActivity">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -20,13 +20,13 @@
             android:layout_width="150dp"
             android:layout_height="70dp"
             android:layout_marginTop="8dp"
-            android:src="@mipmap/ic_launcher"
-            android:scaleType="centerCrop"
             android:layout_marginBottom="8dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toTopOf="@+id/layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout"
@@ -39,12 +39,12 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emailInputLayout"
-                android:layout_width="0dp"
                 style="@style/CustomTextInputLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/Username"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
+                android:hint="@string/Username"
                 app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +55,9 @@
                     style="@style/CustomCursorEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:fontFamily="@font/avenir_regular"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,22 +66,22 @@
                 style="@style/CustomTextInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
                 android:layout_marginBottom="16dp"
+                android:hint="@string/password"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/red_more_light"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/loginButton"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/avenir_regular"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,11 +92,11 @@
                 android:layout_height="wrap_content"
                 android:height="56dp"
                 android:fontFamily="@font/avenir_bold"
-                android:text="Login"
+                android:text="@string/login"
+                app:cornerRadius="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:cornerRadius="30dp"
                 app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

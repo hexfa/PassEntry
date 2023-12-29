@@ -80,7 +80,6 @@ class RetrofitModule {
     }
 
 
-
     @Provides
     @Singleton
     fun providesRxJavaCallAdapterFactory(): RxJava2CallAdapterFactory {

@@ -1,6 +1,5 @@
-package apk.drivers.main.framework.base
+package com.example.passentry.usecase
 
-import com.example.passentry.usecase.UseCase
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
