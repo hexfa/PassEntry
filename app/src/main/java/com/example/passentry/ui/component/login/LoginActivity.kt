@@ -1,5 +1,6 @@
 package com.example.passentry.ui.component.login
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.lifecycle.LiveData
 import com.example.passentry.R
 import com.example.passentry.databinding.LoginActivityBinding
 import com.example.passentry.ui.base.BaseActivity
+import com.example.passentry.ui.component.main.MainActivity
 import com.example.passentry.utils.AUTH_TOKEN
 import com.example.passentry.utils.PASSWORD
 import com.example.passentry.utils.SingleEvent
@@ -80,6 +82,7 @@ class LoginActivity : BaseActivity() {
             binding.emailEditText.text?.trim().toString(),
             binding.passwordEditText.text.toString()
         )?.observe(this) {
+            startActivity(Intent(this, MainActivity::class.java))
 
 
             Log.d(TAG, it.token)
