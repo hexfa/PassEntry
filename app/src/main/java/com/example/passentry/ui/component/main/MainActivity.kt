@@ -79,6 +79,7 @@ class RecyclerViewAdapter(private val items: List<TapResponse>) :
         return ViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item:TapResponse = items[position]
         holder.bind(item)
