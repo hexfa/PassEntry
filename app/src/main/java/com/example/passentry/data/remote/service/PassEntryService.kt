@@ -3,7 +3,6 @@ package com.example.passentry.data.remote.service
 import com.example.passentry.data.remote.login.LoginRequest
 import com.example.passentry.data.remote.login.LoginResponse
 import com.example.passentry.data.remote.tap.TapResponse
-import com.example.passentry.data.remote.tap.test
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET

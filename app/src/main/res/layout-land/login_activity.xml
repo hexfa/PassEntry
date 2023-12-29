@@ -42,7 +42,7 @@
                 android:layout_width="0dp"
                 style="@style/CustomTextInputLayout"
                 android:layout_height="wrap_content"
-                android:hint="User name/Email"
+                android:hint="Username/Email"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
