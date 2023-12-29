@@ -1,0 +1,38 @@
+<resources>
+
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">30dp</item>
+        <item name="boxCornerRadiusBottomStart">30dp</item>
+        <item name="boxCornerRadiusTopEnd">30dp</item>
+        <item name="boxStrokeColor">@color/red_light</item>
+        <item name="strokeColor">@color/red_light</item>
+
+        <item name="colorOutline">@color/red_light</item>
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearance</item>
+        <item name="hintTextColor">@color/red_light</item>
+
+        <item name="boxCornerRadiusTopStart">30dp</item>
+    </style>
+    <style name="CustomTextInputLayout2" parent="Widget.Design.TextInputLayout">
+        <!-- Change the outline (stroke) color -->
+        <item name="boxStrokeColor">@color/red_light</item>
+        <!-- You can also change other properties like boxStrokeWidth, etc., as needed -->
+    </style>
+    <style name="CustomButtonStyle" parent="Widget.MaterialComponents.Button">
+        <!-- Change the background color -->
+        <item name="backgroundTint">@color/red_light</item>
+
+        <!-- Change the text color -->
+        <item name="android:textColor">@color/dark_blue</item>
+
+        <!-- Add other properties as needed -->
+    </style>
+    <style name="CustomCursorEditText">
+        <!-- Change the cursor color -->
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+    </style>
+    <style name="CustomShapeAppearance">
+        <item name="strokeColor">@color/red_light</item>
+        <!-- You can also change other properties like strokeWidth, etc., as needed -->
+    </style>
+</resources>
