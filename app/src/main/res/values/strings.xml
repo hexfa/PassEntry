@@ -24,5 +24,10 @@
     <string name="status_success">Status: success</string>
     <string name="reader_id_reader_0001">Reader ID: reader-0001</string>
     <string name="login">Login</string>
+    <string name="username_password_is_incorrect">Username/Password is incorrect!</string>
+    <string name="password_cannot_empty">Password cannot be empty</string>
+    <string name="password_is_too_short">Password is too short</string>
+    <string name="invalid_email_format">Invalid email format</string>
+    <string name="email_cannot_empty">Email cannot be empty</string>
 
 </resources>

@@ -4,10 +4,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.example.passentry.R
 import com.example.passentry.databinding.LoginActivityBinding
 import com.example.passentry.ui.base.BaseActivity
@@ -18,6 +21,7 @@ import com.example.passentry.utils.SingleEvent
 import com.example.passentry.utils.USERNAME
 import com.example.passentry.utils.setupSnackbar
 import com.example.passentry.utils.showToast
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -46,10 +50,10 @@ class LoginActivity : BaseActivity() {
                 binding.emailEditText,
                 binding.passwordEditText,
                 binding.emailInputLayout,
-                binding.passwordInputLayout
+                binding.passwordInputLayout,
+                binding.errorTxt
             )
         }
-        observeSnackBarMessages(loginViewModel.showSnackBar)
 
 
         // Define the colors
@@ -81,6 +85,11 @@ class LoginActivity : BaseActivity() {
         // Apply the ColorStateList to the TextInputLayout
         binding.emailInputLayout.setBoxStrokeColorStateList(colorStateList)
         binding.passwordInputLayout.setBoxStrokeColorStateList(colorStateList)
+
+        loginViewModel.error().observe(this, Observer {
+            binding.errorTxt.visibility = View.VISIBLE
+            binding.errorTxt.text = getString(R.string.username_password_is_incorrect)
+        })
     }
 
 
@@ -105,7 +114,9 @@ class LoginActivity : BaseActivity() {
     }
 
 
-    private fun observeSnackBarMessages(event: LiveData<String>) {
+    private fun observeSnackBarMessages(event: LiveData<String>, loginButton: MaterialButton) {
+        Log.d(TAG, "observeSnackBarMessages: ")
+        loginButton.error = event.value;
         binding.root.setupSnackbar(this, event, Snackbar.LENGTH_LONG)
     }
 
@@ -118,7 +129,8 @@ class LoginActivity : BaseActivity() {
         emailEditText: TextInputEditText,
         passwordEditText: TextInputEditText,
         emailInputLayout: TextInputLayout,
-        passwordInputLayout: TextInputLayout
+        passwordInputLayout: TextInputLayout,
+        errorTextView: TextView
     ) {
         val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
@@ -129,26 +141,27 @@ class LoginActivity : BaseActivity() {
         var isValid = true
 
         if (email.isEmpty()) {
-            emailInputLayout.error = "Email cannot be empty"
+            emailInputLayout.error = getString(R.string.email_cannot_empty)
             isValid = false
         } else if (!email.matches(emailPattern.toRegex())) {
-            emailInputLayout.error = "Invalid email format"
+            emailInputLayout.error = getString(R.string.invalid_email_format)
             isValid = false
         } else {
             emailInputLayout.error = null
         }
 
         if (password.isEmpty()) {
-            passwordInputLayout.error = "Password cannot be empty"
+            passwordInputLayout.error = getString(R.string.password_cannot_empty)
             isValid = false
         } else if (password.length < 8) {
-            passwordInputLayout.error = "Password is too short"
+            passwordInputLayout.error = getString(R.string.password_is_too_short)
             isValid = false
         } else {
             passwordInputLayout.error = null
         }
 
         if (isValid) {
+            errorTextView.visibility = View.GONE
             doLogin()
         }
     }

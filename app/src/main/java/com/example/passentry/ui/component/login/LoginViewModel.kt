@@ -25,7 +25,7 @@ class LoginViewModel @Inject constructor(
 ) : BaseViewModel() {
     private val TAG = "LoginViewModel"
 
-    var loginResponseLiveData = MutableLiveData<LoginResponse>()
+    private val errorLiveData = MutableLiveData<String>()
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val loginLiveDataPrivate = MutableLiveData<Resource<LoginResponse>>()
@@ -50,8 +50,8 @@ class LoginViewModel @Inject constructor(
                 Log.d(TAG, "getMessage: $it")
             },
             onError = {
-                Log.e(TAG, "getMessage: $it")
-                showSnackBarPrivate.value = it.message
+                Log.e(TAG, "getMessage: ${it.message}")
+                errorLiveData.value=it.message
                 it.printStackTrace()
             }
         )
@@ -59,6 +59,10 @@ class LoginViewModel @Inject constructor(
         return loginLiveData
     }
 
+    fun error():LiveData<String>{
+        //errorLiveData.value=error;
+        return errorLiveData;
+    }
     fun taps(userName: String, passWord: String): LiveData<List<TapResponse>>? {
         val tapLiveData = MutableLiveData<List<TapResponse>>()
         tapsUseCase.saveTap(LoginRequest(userName, passWord))
